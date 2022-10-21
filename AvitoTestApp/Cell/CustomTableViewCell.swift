@@ -51,10 +51,10 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     
-    func configure(model: Model, indexPath: IndexPath) {
-        nameLabel.text = model.company.employees[indexPath.row].name
-        phoneLabel.text! += model.company.employees[indexPath.row].phone_number
-        skillsLabel.text! += model.company.employees[indexPath.row].skills.joined(separator: ", ")
+    func configure(emplyeesArray: [Employees], indexPath: IndexPath) {
+        nameLabel.text = emplyeesArray[indexPath.row].name
+        phoneLabel.text! += emplyeesArray[indexPath.row].phone_number
+        skillsLabel.text! += emplyeesArray[indexPath.row].skills.joined(separator: ", ")
         
     }
     

@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     private let networkService = NetworkService()
     private var parsedData: Model? = nil
+    private var sortedEmployeeArray = [Employees]()
     private let urlString = "https://run.mocky.io/v3/1d1cb4ec-73db-4762-8c4b-0b8aa3cecd4c"
     private let cellIdentifier = "cellIdentifier"
     
@@ -38,6 +39,7 @@ class ViewController: UIViewController {
             switch result {
             case .success(let parsedData):
                 self?.parsedData = parsedData
+                self?.sortedEmployeeArray = parsedData.company.employees.sorted { $0 < $1 }
                 DispatchQueue.main.async {
                     self?.labelText.text = "\(parsedData.company.name) employees"
                     self?.tableView.reloadData()
@@ -86,8 +88,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomTableViewCell
-        guard let model = parsedData else { return UITableViewCell() }
-        cell.configure(model: model, indexPath: indexPath)
+        let model = sortedEmployeeArray
+        cell.configure(emplyeesArray: model, indexPath: indexPath)
         return cell
     }
     

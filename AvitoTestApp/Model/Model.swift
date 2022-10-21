@@ -16,7 +16,11 @@ struct Company: Decodable {
     var employees: [Employees]
 }
 
-struct Employees: Decodable {
+struct Employees: Decodable, Comparable {
+    static func < (lhs: Employees, rhs: Employees) -> Bool {
+        return lhs.name < rhs.name
+    }
+    
     let name: String
     let phone_number: String
     let skills: [String]
