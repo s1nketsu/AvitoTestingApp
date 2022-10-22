@@ -4,10 +4,14 @@
 //
 //  Created by Полищук Александр on 21.10.2022.
 //
-
 import Foundation
+import UIKit
 
-class NetworkService {
+//MARK: - Request
+
+class NetworkService: UIViewController {
+
+    let oneHour: Double = 3600
     
     func request(url: String, completion: @escaping (Result<Model, Error>) -> Void) {
         guard let url = URL(string: url) else { return }
@@ -30,5 +34,8 @@ class NetworkService {
                 completion(.failure(jsonError))
             }
         }.resume()
+        URLCache.shared.removeCachedResponses(since: Date.init(timeIntervalSinceNow: oneHour))
     }
 }
+
+

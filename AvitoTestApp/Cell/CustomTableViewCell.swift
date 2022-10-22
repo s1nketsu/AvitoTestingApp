@@ -9,10 +9,12 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
     
+//    MARK: - Инициализация UI элеметов
+    
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.font = UIFont(name: "Avenir Next Bold", size: 20)
+        label.font = UIFont(name: "Avenir Next Demi Bold", size: 20)
         label.textAlignment = .left
         label.tintColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +23,7 @@ class CustomTableViewCell: UITableViewCell {
     
     lazy var phoneLabel: UILabel = {
         let label = UILabel()
-        label.text = "Phone number: "
+        label.text = ""
         label.font = UIFont(name: "Avenir Next", size: 18)
         label.textAlignment = .right
         label.tintColor = .black
@@ -31,7 +33,7 @@ class CustomTableViewCell: UITableViewCell {
     
     lazy var skillsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Skills: "
+        label.text = ""
         label.font = UIFont(name: "Avenir Next", size: 18)
         label.textAlignment = .left
         label.tintColor = .black
@@ -39,6 +41,7 @@ class CustomTableViewCell: UITableViewCell {
         return label
     }()
     
+//     MARK: - Инициализаторы
     
     required override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,12 +53,12 @@ class CustomTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    MARK: - Реализация методов конфигурации ячейки и setConstraints
     
     func configure(emplyeesArray: [Employees], indexPath: IndexPath) {
         nameLabel.text = emplyeesArray[indexPath.row].name
-        phoneLabel.text! += emplyeesArray[indexPath.row].phone_number
-        skillsLabel.text! += emplyeesArray[indexPath.row].skills.joined(separator: ", ")
-        
+        phoneLabel.text! = "Phone number: \(emplyeesArray[indexPath.row].phone_number)"
+        skillsLabel.text! = "Skills: \(emplyeesArray[indexPath.row].skills.joined(separator: ", "))"
     }
     
     private func setConstraints() {
@@ -76,9 +79,6 @@ class CustomTableViewCell: UITableViewCell {
             skillsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             skillsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
             skillsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
-        
         ])
     }
-    
-    
 }

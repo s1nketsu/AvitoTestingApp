@@ -15,6 +15,7 @@
 		A30ECFCC29028C04007D637D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ECFCB29028C04007D637D /* Model.swift */; };
 		A30ECFCE290299A6007D637D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ECFCD290299A6007D637D /* NetworkService.swift */; };
 		A30ECFD32902A5F5007D637D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ECFD22902A5F5007D637D /* CustomTableViewCell.swift */; };
+		A395AD392903E6430023275E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395AD382903E6430023275E /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A30ECFCB29028C04007D637D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A30ECFCD290299A6007D637D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A30ECFD22902A5F5007D637D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		A395AD382903E6430023275E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +66,9 @@
 				A30ECFC9290289C1007D637D /* Resources */,
 				A30ECFD029029C26007D637D /* NetworkService */,
 				A30ECFCF29029ABB007D637D /* Model */,
-				A30ECFD12902A5DE007D637D /* Cell */,
 				A30ECFCA290289C7007D637D /* Code */,
+				A395AD372903E6320023275E /* Extensions */,
+				A30ECFD12902A5DE007D637D /* Cell */,
 			);
 			path = AvitoTestApp;
 			sourceTree = "<group>";
@@ -119,6 +122,14 @@
 				A30ECFD22902A5F5007D637D /* CustomTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A395AD372903E6320023275E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A395AD382903E6430023275E /* Alert.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 				A30ECFCC29028C04007D637D /* Model.swift in Sources */,
 				A30ECFB52902899D007D637D /* AppDelegate.swift in Sources */,
 				A30ECFB72902899D007D637D /* SceneDelegate.swift in Sources */,
+				A395AD392903E6430023275E /* Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,8 +352,8 @@
 				INFOPLIST_FILE = AvitoTestApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,8 +383,8 @@
 				INFOPLIST_FILE = AvitoTestApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

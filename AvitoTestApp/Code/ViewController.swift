@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
+    
+    //    MARK: - Инициализация параметров и UI элементов
     
     private let networkService = NetworkService()
     private var parsedData: Model? = nil
@@ -21,20 +24,33 @@ class ViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var labelText: UILabel = {
+    public lazy var labelText: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir Next Demi Bold", size: 25)
+        label.font = UIFont(name: "Avenir Next Bold", size: 25)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    //    MARK: - Жизненный цикл приложения
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         setConstraints()
-        
+        getData()
+    }
+    
+    //    MARK: - Создание методов
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+    }
+    
+    fileprivate func getData() {
         networkService.request(url: urlString) { [weak self] (result) in
             switch result {
             case .success(let parsedData):
@@ -45,18 +61,12 @@ class ViewController: UIViewController {
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
-                print("Вы получили ошибку:", error)
+                self?.alertNoInternet(error: error)
             }
         }
     }
     
-    func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-    }
-    
-    func setConstraints() {
+    private func setConstraints() {
         view.backgroundColor = .white
         view.addSubview(labelText)
         NSLayoutConstraint.activate([
@@ -74,12 +84,15 @@ class ViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
         ])
     }
-    
 }
+
+
+// MARK: - UITableViewDelegate и UITableViewDataSource
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return parsedData?.company.employees.count ?? 0
+        return sortedEmployeeArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -92,6 +105,4 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(emplyeesArray: model, indexPath: indexPath)
         return cell
     }
-    
-    
 }

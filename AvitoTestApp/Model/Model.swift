@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - Модель парсинга
+
 struct Model: Decodable {
     var company: Company
 }
@@ -25,4 +27,3 @@ struct Employees: Decodable, Comparable {
     let phone_number: String
     let skills: [String]
 }
-
