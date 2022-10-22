@@ -12,7 +12,7 @@ extension ViewController {
 //    MARK: - Создание alert
     
     func alertNoInternet(error: Error) {
-        let alert = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Connection Error", message: "\(error.localizedDescription) Please restart the App", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)

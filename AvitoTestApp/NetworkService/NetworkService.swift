@@ -7,11 +7,15 @@
 import Foundation
 import UIKit
 
-//MARK: - Request
-
 class NetworkService: UIViewController {
+    
+// MARK: - Создание параметров
 
-    let oneHour: Double = 3600
+    private var timer = Timer()
+
+    let oneHour: Double = 5
+    
+//    MARK: - Создание URLSession Request
     
     func request(url: String, completion: @escaping (Result<Model, Error>) -> Void) {
         guard let url = URL(string: url) else { return }
@@ -34,7 +38,18 @@ class NetworkService: UIViewController {
                 completion(.failure(jsonError))
             }
         }.resume()
-        URLCache.shared.removeCachedResponses(since: Date.init(timeIntervalSinceNow: oneHour))
+        setupClearCacheTimer()
+    }
+    
+//    MARK: - Функция для сброса кэша
+    
+    func setupClearCacheTimer() {
+        timer = Timer.scheduledTimer(timeInterval: oneHour, target: self, selector: #selector(clearCacheData), userInfo: nil, repeats: false)
+    }
+
+    @objc private func clearCacheData() {
+        URLCache.shared.removeAllCachedResponses()
+        print(URLCache.shared.currentMemoryUsage)
     }
 }
 

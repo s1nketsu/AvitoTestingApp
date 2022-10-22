@@ -23,20 +23,13 @@ class ViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
-    public lazy var labelText: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Avenir Next Bold", size: 25)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+
     
     //    MARK: - Жизненный цикл приложения
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         setupTableView()
         setConstraints()
         getData()
@@ -57,28 +50,23 @@ class ViewController: UIViewController {
                 self?.parsedData = parsedData
                 self?.sortedEmployeeArray = parsedData.company.employees.sorted { $0 < $1 }
                 DispatchQueue.main.async {
-                    self?.labelText.text = "\(parsedData.company.name) employees"
+                    self?.title = "\(parsedData.company.name) employees"
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
                 self?.alertNoInternet(error: error)
+                print(error.localizedDescription)
             }
         }
     }
     
     private func setConstraints() {
         view.backgroundColor = .white
-        view.addSubview(labelText)
-        NSLayoutConstraint.activate([
-            labelText.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            labelText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            labelText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            labelText.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: labelText.bottomAnchor, constant: 0),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
