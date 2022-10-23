@@ -65,7 +65,7 @@
 				A30ECFC8290289BB007D637D /* Application */,
 				A30ECFC9290289C1007D637D /* Resources */,
 				A30ECFD029029C26007D637D /* NetworkService */,
-				A30ECFCF29029ABB007D637D /* Model */,
+				A30ECFCF29029ABB007D637D /* Models */,
 				A30ECFCA290289C7007D637D /* Code */,
 				A395AD372903E6320023275E /* Extensions */,
 				A30ECFD12902A5DE007D637D /* Cell */,
@@ -85,8 +85,8 @@
 		A30ECFC9290289C1007D637D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A30ECFBD2902899E007D637D /* Assets.xcassets */,
 				A30ECFBF2902899E007D637D /* LaunchScreen.storyboard */,
+				A30ECFBD2902899E007D637D /* Assets.xcassets */,
 				A30ECFC22902899E007D637D /* Info.plist */,
 			);
 			path = Resources;
@@ -100,12 +100,12 @@
 			path = Code;
 			sourceTree = "<group>";
 		};
-		A30ECFCF29029ABB007D637D /* Model */ = {
+		A30ECFCF29029ABB007D637D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				A30ECFCB29028C04007D637D /* Model.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A30ECFD029029C26007D637D /* NetworkService */ = {

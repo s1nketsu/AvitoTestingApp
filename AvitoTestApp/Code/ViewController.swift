@@ -10,7 +10,7 @@ import Foundation
 
 class ViewController: UIViewController {
     
-    //    MARK: - Инициализация параметров и UI элементов
+//    MARK: - Инициализация параметров и UI элементов
     
     private let networkService = NetworkService()
     private var parsedData: Model? = nil
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         return tableView
     }()
     
-    //    MARK: - Жизненный цикл приложения
+//    MARK: - Жизненный цикл приложения
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         getData()
     }
     
-    //    MARK: - Создание методов
+//    MARK: - Создание методов
     
     private func setupTableView() {
         tableView.delegate = self
@@ -62,7 +62,6 @@ class ViewController: UIViewController {
     private func setConstraints() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
-
         
         view.addSubview(tableView)
         NSLayoutConstraint.activate([

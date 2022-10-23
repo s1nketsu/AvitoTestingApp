@@ -9,11 +9,11 @@ import UIKit
 
 class NetworkService: UIViewController {
     
-// MARK: - Создание параметров
+//    MARK: - Создание параметров
 
     private var timer = Timer()
 
-    let oneHour: Double = 5
+    private let oneHour: Double = 3600
     
 //    MARK: - Создание URLSession Request
     
@@ -49,6 +49,5 @@ class NetworkService: UIViewController {
 
     @objc private func clearCacheData() {
         URLCache.shared.removeAllCachedResponses()
-        print(URLCache.shared.currentMemoryUsage)
     }
 }
