@@ -52,5 +52,3 @@ class NetworkService: UIViewController {
         print(URLCache.shared.currentMemoryUsage)
     }
 }
-
-

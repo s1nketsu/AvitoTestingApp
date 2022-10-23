@@ -23,7 +23,6 @@ class ViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-
     
     //    MARK: - Жизненный цикл приложения
     
@@ -43,7 +42,7 @@ class ViewController: UIViewController {
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
     
-    fileprivate func getData() {
+    private func getData() {
         networkService.request(url: urlString) { [weak self] (result) in
             switch result {
             case .success(let parsedData):
@@ -61,8 +60,9 @@ class ViewController: UIViewController {
     }
     
     private func setConstraints() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+
         
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -73,7 +73,6 @@ class ViewController: UIViewController {
         ])
     }
 }
-
 
 // MARK: - UITableViewDelegate и UITableViewDataSource
 
