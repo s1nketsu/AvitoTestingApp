@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     
         setupTableView()
         setConstraints()
-        getData()
+        getDataAndSetTitle()
     }
     
 //    MARK: - Создание методов
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
     
-    private func getData() {
+    private func getDataAndSetTitle() {
         networkService.request(url: urlString) { [weak self] (result) in
             switch result {
             case .success(let parsedData):
