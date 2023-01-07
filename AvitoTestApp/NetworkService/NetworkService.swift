@@ -12,7 +12,6 @@ class NetworkService: UIViewController {
 //    MARK: - Создание параметров
 
     private var timer = Timer()
-
     private let oneHour: Double = 3600
     
 //    MARK: - Создание URLSession Request
